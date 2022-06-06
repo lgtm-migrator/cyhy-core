@@ -1,7 +1,7 @@
 # NOTE: Be careful- you really don't want to push this Docker image to the
 # public Docker Hub if it was built with your MaxMind license key!
 
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 # For a list of pre-defined annotation keys and value types see:
 # https://github.com/opencontainers/image-spec/blob/master/annotations.md
@@ -29,7 +29,7 @@ VOLUME ${CYHY_ETC} ${CYHY_HOME}
 # Add MongoDB official repository and backports
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 \
   && echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list \
-  && echo "deb http://deb.debian.org/debian stretch-backports main" | tee /etc/apt/sources.list.d/stretch-backports.list
+  && echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
 
 # Install required packages
 RUN apt-get update \
